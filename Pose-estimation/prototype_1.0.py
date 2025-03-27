@@ -1,6 +1,6 @@
+#
 #installeer eerst Mediapipe en OpenCV
 #pip install mediapipe & pip install opencv-python
-#
 #
 import cv2
 import mediapipe as mp
@@ -52,6 +52,8 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                                       mp_drawing.DrawingSpec(color=HAND_COLOR, thickness=2, circle_radius=3),
                                       mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2, circle_radius=2))
 
+        #print(result.right_hand_landmarks)
+        #print(result.left_hand_landmarks)
         # Teken gezichtslandmarks (468 punten)
         if result.face_landmarks:
             mp_drawing.draw_landmarks(frame, result.face_landmarks, mp_holistic.FACEMESH_TESSELATION,
