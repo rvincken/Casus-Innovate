@@ -3,23 +3,19 @@ import mediapipe as mp
 import os
 import time
 
-# Mediapipe initialiseren
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
 mp_hands = mp.solutions.hands
 
-# Webcam openen
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
-# Knop positie en grootte
 button_x, button_y, button_w, button_h = 100, 100, 150, 50
 
-# Kleuren voor landmarks
-POSE_COLOR = (0, 255, 0)   # Groen voor skelet
-HAND_COLOR = (255, 0, 0)   # Blauw voor handen
-FACE_COLOR = (0, 0, 255)   # Rood voor gezicht
+POSE_COLOR = (0, 255, 0)
+HAND_COLOR = (255, 0, 0)
+FACE_COLOR = (0, 0, 255)
 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic, \
      mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7) as hands:
@@ -75,7 +71,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
         cv2.imshow('Pose & Handtracking met Knop Interactie', frame)
 
-        # Stop als de gebruiker op 'q' drukt
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
 
