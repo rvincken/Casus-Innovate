@@ -60,9 +60,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
             for hand_landmarks in hand_results.multi_hand_landmarks:
                 for id, lm in enumerate(hand_landmarks.landmark):
                     cx, cy = int(lm.x * w), int(lm.y * h)
-
-                    cv2.circle(frame, (cx, cy), 10, (255, 0, 0), -1)
-
                     if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
                         print("Knop ingedrukt! Venster openen...")
                         os.system("start chrome.exe")
