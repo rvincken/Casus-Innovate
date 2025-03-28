@@ -68,6 +68,42 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                             print("Knop ingedrukt! Venster openen...")
                             os.system("start chrome.exe")
                             time.sleep(1)
+                    if id == 4:
+                        cx, cy = int(lm.x * w), int(lm.y * h)
+
+                        cv2.circle(frame, (cx, cy), 10, (255, 0, 0), -1)
+
+                        if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
+                            print("Knop ingedrukt! Venster openen...")
+                            os.system("start chrome.exe")
+                            time.sleep(1)
+                    if id == 12:
+                        cx, cy = int(lm.x * w), int(lm.y * h)
+
+                        cv2.circle(frame, (cx, cy), 10, (255, 0, 0), -1)
+
+                        if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
+                            print("Knop ingedrukt! Venster openen...")
+                            os.system("start chrome.exe")
+                            time.sleep(1)
+                    if id == 16:
+                        cx, cy = int(lm.x * w), int(lm.y * h)
+
+                        cv2.circle(frame, (cx, cy), 10, (255, 0, 0), -1)
+
+                        if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
+                            print("Knop ingedrukt! Venster openen...")
+                            os.system("start chrome.exe")
+                            time.sleep(1)
+                    if id == 20:
+                        cx, cy = int(lm.x * w), int(lm.y * h)
+
+                        cv2.circle(frame, (cx, cy), 10, (255, 0, 0), -1)
+
+                        if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
+                            print("Knop ingedrukt! Venster openen...")
+                            os.system("start chrome.exe")
+                            time.sleep(1)
 
         cv2.imshow('Pose & Handtracking met Knop Interactie', frame)
 
