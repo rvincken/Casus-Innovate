@@ -28,7 +28,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
             break
 
         frame = cv2.flip(frame, 1)
-        button_1 = Button(frame, "Test knop",100, 100, 150, 50, (0, 255, 0), (0, 200, 0))
+        button_1 = Button(frame, "Test knop",100, 100, 150, 50, (0, 255, 0), (0, 200, 0), lambda: os.system("start chrome.exe"))
         h, w, _ = frame.shape
 
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -58,14 +58,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
                                       mp_drawing.DrawingSpec(color=FACE_COLOR, thickness=1, circle_radius=1),
                                       mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=1, circle_radius=1))
 
-        if hand_results.multi_hand_landmarks:
-            for hand_landmarks in hand_results.multi_hand_landmarks:
-                for id, lm in enumerate(hand_landmarks.landmark):
-                    cx, cy = int(lm.x * w), int(lm.y * h)
-                    if button_x < cx < button_x + button_w and button_y < cy < button_y + button_h:
-                        print("Knop ingedrukt! Venster openen...")
-                        os.system("start chrome.exe")
-                        time.sleep(1)
+        button_1.check_hover(hand_results, h, w)
                     
 
         cv2.imshow('Pose & Handtracking met Knop Interactie', frame)
