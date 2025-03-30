@@ -34,7 +34,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         hand_results = hands.process(rgb_frame)
 
         cv2.rectangle(frame, (button_x, button_y), (button_x + button_w, button_y + button_h), (0, 255, 0), -1)
-        cv2.putText(frame, "Open Venster", (button_x + 10, button_y + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
+        cv2.putText(frame, "Open Venster", (button_x, button_y + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
 
         if result.pose_landmarks:
             mp_drawing.draw_landmarks(frame, result.pose_landmarks, mp_holistic.POSE_CONNECTIONS,
