@@ -2,6 +2,7 @@
 import mediapipe as mp
 import os
 import time
+from Button import Button
 
 mp_drawing = mp.solutions.drawing_utils
 mp_holistic = mp.solutions.holistic
@@ -12,6 +13,7 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
 
 button_x, button_y, button_w, button_h = 100, 100, 150, 50
+
 
 POSE_COLOR = (0, 255, 0)
 HAND_COLOR = (255, 0, 0)
@@ -26,6 +28,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
             break
 
         frame = cv2.flip(frame, 1)
+        button_1 = Button(frame, "Test knop",100, 100, 150, 50, (0, 255, 0), (0, 200, 0))
         h, w, _ = frame.shape
 
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -33,8 +36,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         result = holistic.process(rgb_frame)
         hand_results = hands.process(rgb_frame)
 
-        cv2.rectangle(frame, (button_x, button_y), (button_x + button_w, button_y + button_h), (0, 255, 0), -1)
-        cv2.putText(frame, "Open Venster", (button_x, button_y + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
+        button_1.draw()
 
         if result.pose_landmarks:
             mp_drawing.draw_landmarks(frame, result.pose_landmarks, mp_holistic.POSE_CONNECTIONS,
