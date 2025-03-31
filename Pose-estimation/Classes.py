@@ -27,7 +27,19 @@ class Button:
                         print("Knop ingedrukt! Venster openen...")
                         if self.action != None:
                             self.action()
-                            time.sleep(1)
+                            time.sleep(2.5)
                         else:
                             print("geen actie aanwezig voor deze knop")
                         return
+
+
+class Text:
+    def __init__(self, frame, text, x, y, color):
+        self.text = text
+        self.x = x
+        self.y = y
+        self.color = color
+        self.frame = frame
+
+    def draw(self):
+        cv2.putText(self.frame, self.text, (self.x, self.y), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (self.color), 2)
